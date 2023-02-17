@@ -20,7 +20,7 @@ def base():
     return render_template('base.html')
 
 
-#######
+
 @app.route('/submit/', methods=['POST', 'GET'])
 def submit():
     if request.method == 'GET':
@@ -30,8 +30,7 @@ def submit():
         return render_template('submit.html', thanks = True, handle = handle, message = message)
 
 
-# matplotlib: https://matplotlib.org/3.5.0/gallery/user_interfaces/web_application_server_sgskip.html
-# plotly: https://towardsdatascience.com/web-visualization-with-plotly-and-flask-3660abf9c946
+
 @app.route('/view/')
 def view():
     messages = random_messages(3)
@@ -98,6 +97,8 @@ def random_messages(n):
     
     # get all the messages 
     messages = cursor.fetchall()
+    
+    # close the connection
     db.close()
     
     return messages
